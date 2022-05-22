@@ -135,3 +135,39 @@ $query_run=mysqli_query($handle,$query);
             if($gender=='Male')
             {
 ?>
+  <div class="responsive">
+  <div class="img">
+      <img src="images/img_avatar.png" alt="<?php echo $first_name.' '.$last_name; ?>" width="300" height="200">
+    <div class="desc">
+    <h4 style='color:green;'><?php echo $first_name.' '.$last_name; ?></h4>
+    <p><strong>Contact:</strong><?php echo $contact; ?></p>
+    <p><strong>Email id:</strong><?php echo $email_id; ?></p>
+    </div>
+  </div> 
+</div>
+<?php
+            }
+            else
+            {
+?>
+<div class="responsive">
+  <div class="img">
+      <img src="images/img_avatar2.png" alt="<?php echo $first_name.' '.$last_name; ?>" width="300" height="200">
+    <div class="desc">
+    <h4 style='color:green;'><?php echo $first_name.' '.$last_name; ?></h4>
+    <p><strong>Contact:</strong><?php echo $contact; ?></p>
+    <p><strong>Email id:</strong><?php echo $email_id; ?></p>
+    </div>
+  </div> 
+</div>
+<?php
+            }
+  }
+}
+?>
+</div>
+</body>
+</html>
+
+
+
