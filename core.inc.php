@@ -19,3 +19,17 @@
 			return false;
 		}
 	}
+function getuserfield($field)
+	{
+		require 'connect.inc.php';
+		$query="SELECT $field from Student where id='".$_SESSION['user_id_student']."'";
+        $handle = @mysqli_connect('localhost', 'root', 'root','pi');
+        if($query_run=mysqli_query($handle,$query))
+		{
+			while($query_row=mysqli_fetch_assoc($query_run))
+			{
+				return $query_row[$field];
+			}
+		}
+	}
+?>
