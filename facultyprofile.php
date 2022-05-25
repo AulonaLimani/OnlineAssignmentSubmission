@@ -232,3 +232,49 @@ h3 {
     background-color: #F0F8FF;
     color: white;
 }
+</style>
+<body style="background-color:#F0F8FF";>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="" style="font-size:20px; color:#3C6E71";><span class="glyphicon glyphicon-pencil" style="color:#000"></span>BRIGHT MIND!</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+      <li><a href="loginfac.php"> HOME</a></li>
+   <li><a href="logoutfac.php"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br><br><br>
+<div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width:25%">
+    </div>
+    <div class="progress-bar progress-bar-info" role="progressbar" style="width:25%">
+    </div>
+    <div class="progress-bar progress-bar-warning" role="progressbar" style="width:25%">
+    </div>
+    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:25%">
+    </div>
+  </div>
+<div class="container" style="background:#fff";>
+<header style="text-align:center;">
+<p1>Your Profile</p1>
+</header>
+<div class="row">
+            <section class="col col-sm-4" style="padding:30px";>
+            <h1><?php echo $first_name.' '.$last_name; ?></h1>
+                  <p><strong>Designation: </strong><?php if(!empty($designation)){echo $designation;} else{ echo ' ';} ?></p>
+                  <p><strong>Email id: </strong><?php if(!empty($email_id)){echo $email_id;} else{ echo ' ';} ?></p>
+                  <p><strong>Contact: </strong><?php if(!empty($contact)){echo $contact;} else{ echo ' ';} ?></p>
+                  <p><strong>Department: </strong><?php if(!empty($department)){echo $department;} else{ echo ' ';} ?></p>
+            </section>
+            <section class="col col-sm-6"></section>
+            <section class="col col-sm-2" style="padding:15px;"><br><button class="btn btn-danger btn-lg" id="myBtn" style="background-color:  #3C6E71 ; border: none"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</button></section>
+            <div id="myModal" class="modal">
