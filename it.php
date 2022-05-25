@@ -10,7 +10,9 @@
   <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <style>
-  div.img {
+
+
+div.img {
     border: 1px solid #ccc;
 }
 
@@ -88,7 +90,7 @@ div.desc {
 }
 </style>
 </head>
-  <body>
+<body>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
