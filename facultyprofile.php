@@ -340,3 +340,85 @@ h3 {
 </div>
 
 <script>
+	// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</div>
+<hr>
+<div class="row">
+            <section class="col col-sm-4" style="padding:30px;">
+              <h2 style="color: lightblue";>EDUCATION</h2>
+            </section>
+            <section class="col col-sm-8" style="padding:30px 30px";>
+              <h3>Graduation:</h3>
+              <p><?php if(!empty($college)){echo $college;} else{ echo ' ';} ?></p>
+              <h3>Higher Studies:</h3>
+              <p><?php if(!empty($higher_studies1)){echo $higher_studies1;} else{ echo ' ';} ?></p>
+              <p><?php if(!empty($higher_studies2)){echo $higher_studies2;} else{ echo ' ';} ?></p>
+          </section>
+</div>
+<hr>
+<div class="row">
+            <section class="col col-sm-4" style="padding:30px;">
+              <h2 style="color: lightblue";>SPECIALIZATION</h2>
+            </section>
+            <section class="col col-sm-8" style="padding:30px 30px";>
+              <p><?php if(!empty($specialization)){echo $specialization;} else{ echo ' ';} ?></p>
+          </section>
+</div>
+<hr>
+<div class="row">
+            <section class="col col-sm-4" style="padding:30px;">
+              <h2 style="color: lightblue";>TEACHING</h2>
+            </section>
+            <section class="col col-sm-8" style="padding:30px 30px";>
+              <h3>Graduate Level:</h3>
+              <p><?php if(!empty($graduate_teach)){echo $graduate_teach;} else{ echo ' ';} ?></p>
+              <h3>Post Graduate Level:</h3>
+              <p><?php if(!empty($pg_teach)){echo $pg_teach;} else{ echo ' ';} ?></p>
+          </section>
+</div>
+<div class="row">
+            <section class="col col-sm-4" style="padding:30px;">
+              <h2 style="color: lightblue";>OTHER DETAILS</h2>
+            </section>
+            <section class="col col-sm-8" style="padding:30px 30px";>
+              <h3>Address: </h3>
+              <p><?php if(!empty($address)){echo $address;} else{ echo ' ';} ?></p>
+              <h3>Gender: </h3>
+              <p><?php if(!empty($gender)){echo $gender;} else{ echo ' ';} ?></p>
+              <h3>Date of Birth: </h3>
+              <p><?php if(!empty($date_of_birth)){echo $date_of_birth;} else{ echo 'No Data.';} ?></p>
+              <h3>Year of Passing: </h3>
+              <p><?php if(!empty($date_of_joining)){echo $date_of_joining;} else{ echo ' ';} ?></p>
+          </section>
+</div>
+</div>
+<footer>
+</footer>
+</body>
+</html>
