@@ -278,3 +278,65 @@ h3 {
             <section class="col col-sm-6"></section>
             <section class="col col-sm-2" style="padding:15px;"><br><button class="btn btn-danger btn-lg" id="myBtn" style="background-color:  #3C6E71 ; border: none"><span class="glyphicon glyphicon-pencil"></span> Edit Profile</button></section>
             <div id="myModal" class="modal">
+		     <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h2 >Edit Profile</h2>
+    </div>
+    <div class="modal-body">
+      <form action="update1.php" method="POST">
+      	<strong>First Name: </strong>
+      	<input type="text" name="firstname" value="<?php echo $first_name; ?>" maxlength=40 required>
+      	<br><br>
+      	<strong>Last Name: </strong>
+      	<input type="text" name="lastname" value="<?php echo $last_name; ?>" maxlength=40 required>
+        <br><br>
+        <strong>Designation: </strong>
+        <input type="text" name="designation" value="<?php if(!empty($designation)){echo $designation;} else{ echo ' ';} ?>" required>
+      	<br><br>
+      	<strong>Email Id: </strong>
+      	<input type="text" name="email_id" value="<?php if(!empty($email_id)){echo $email_id;} else{ echo ' ';} ?>" required>
+      	<br><br>
+      	<strong>Contact: </strong>
+      	<input type="text" name="contact" value="<?php if(!empty($contact)){echo $contact;} else{ echo ' ';} ?>" maxlength=11 required>
+      	<br><br>
+      	<strong>Dept: </strong>
+      	<input type="text" name="department" value="<?php if(!empty($department)){echo $department;} else{ echo ' ';} ?>" maxlength=10 required>
+      	<br><br>
+        <strong>Graduation:</strong>
+        <input type="text" name="college" value="<?php if(!empty($college)){echo $college;} else{ echo ' ';} ?>">
+      	<br><br>
+      	<strong>Higher Studies:</strong>
+      	<input type="text" name="higher_studies1" value="<?php if(!empty($higher_studies1)){echo $higher_studies1;} else{ echo ' ';} ?>"> 
+        <input type="text" name="higher_studies2" value="<?php if(!empty($higher_studies2)){echo $higher_studies2;} else{ echo ' ';} ?>">
+        <br><br>
+        <strong>Specialization:</strong>
+        <input type="text" name="specialization" value="<?php if(!empty($specialization)){echo $specialization;} else{ echo ' ';} ?>">
+        <br><br>
+        <strong>Graduate Level Teaching:</strong>
+        <input type="text" name="graduate_teach" value="<?php if(!empty($graduate_teach)){echo $graduate_teach;} else{ echo ' ';} ?>">
+        <br><br>
+        <strong>Post Graduate Teaching:</strong>
+        <input type="text" name="pg_teach" value="<?php if(!empty($pg_teach)){echo $pg_teach;} else{ echo ' ';} ?>">
+        <br><br>
+      	<strong>Address:</strong>
+      	<input type="text" name="address" value="<?php if(!empty($address)){echo $address;} else{ echo ' ';} ?>">
+      	<br><br>
+      	<strong>Gender:</strong>
+      	<input type="text" name="gender" value="<?php if(!empty($gender)){echo $gender;} else{ echo ' ';} ?>">
+      	<strong>Date of Birth:</strong>
+      	<input type="date" name="date_of_birth" value="<?php if(!empty($date_of_birth)){echo $date_of_birth;} else{ echo ' Not specified.';} ?>">
+        <strong>Date of Joining:</strong>
+      	<input type="date" name="date_of_joining" value="<?php if(!empty($date_of_joining)){echo $date_of_joining;} else{ echo ' Not specified.';} ?>">
+      	<br><br>
+      	<input type="submit" class="btn btn-info btn-lg" value="Update">
+      </form>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+
+</div>
+
+<script>
