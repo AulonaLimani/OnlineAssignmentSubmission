@@ -21,3 +21,44 @@ $subject = $_GET['Subject'];
     <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <style>
+        body{
+            background-color: #D9D9D9;
+        }
+
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .navbar {
+            margin-bottom: 0;
+            background-color: transparent;
+            z-index: 9999;
+            border: 0;
+            font-size: 12px !important;
+            line-height: 1.42857143 !important;
+            letter-spacing: 4px;
+            border-radius: 0;
+        }
+
+        .navbar li a, .navbar .navbar-brand {
+            color: #3C6E71 !important;
+            font-weight: bolder;
+        }
+
+        .navbar-nav li a:hover, .navbar-nav li.active a {
+            color: #fff !important;
+            background-color: #284B63 !important;
+        }
+
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+            color: #C94B4B !important;
+        }
+    </style>
