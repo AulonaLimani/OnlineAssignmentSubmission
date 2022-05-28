@@ -62,3 +62,47 @@ $subject = $_GET['Subject'];
             color: #C94B4B !important;
         }
     </style>
+    </head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="" style="font-size:20px; color:#C94B4B" ;><span
+                        class="glyphicon glyphicon-pencil" style="color:#000"></span>BRIGHT MIND!</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="loginfac.php"> HOME</a></li>
+                <li><a href="logoutfac.php"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br><br>
+<div class="container">
+    <h1>The<span style="color: #284B63; font-weight: bolder"> submissions for assignments</span> for Assignment id <span style="color: #284B63; font-weight: bolder"><?php echo $assignmentid; ?></span> Subject
+        <span style="color: #284B63; font-weight: bolder"><?php echo $subject; ?></span></h1>
+    <div id="body">
+        <table width="80%" border="1" class="responstable">
+            <tr>
+                <th colspan="12"style="background-color: #3C6E71">SEE THE SUBMISSIONS HERE!</th>
+            </tr>
+            <tr>
+                <td><strong>File Name</strong></td>
+                <td><strong>File Type</strong></td>
+                <td><strong>First Name</strong></td>
+                <td><strong>Last Name</strong></td>
+                <td><strong>Dept</strong></td>
+                <td><strong>Year</strong></td>
+                <td><strong>Subject</strong></td>
+                <td><strong>Date</strong></td>
+                <td><strong>View</strong></td>
+                <td><strong>Points</strong></td>
+                <td><strong>Evaluation</strong></td>
+            </tr>
+            <?php
