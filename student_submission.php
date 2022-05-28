@@ -106,3 +106,57 @@ $subject = $_GET['Subject'];
                 <td><strong>Evaluation</strong></td>
             </tr>
             <?php
+             $handle = @mysqli_connect('localhost', 'root', 'root', 'pi2');
+
+            $sql = "SELECT * FROM Submission where Assignmentid='" . mysqli_real_escape_string($handle, $assignmentid) . "'";
+            $result_set = mysqli_query($handle, $sql);
+            while ($row = mysqli_fetch_array($result_set)) {
+                ?>
+                <tr>
+                    <td><?php echo $row['file'] ?></td>
+                    <td><?php echo $row['type'] ?></td>
+                    <td><?php echo $row['Firstname'] ?></td>
+                    <td><?php echo $row['Lastname'] ?></td>
+                    <td><?php echo $row['Department'] ?></td>
+                    <td><?php echo $row['Year'] ?></td>
+                    <td><?php echo $row['Subject'] ?></td>
+                    <td><?php echo $row['Date'] ?></td>
+                    <td><a href="submissions/<?php echo $row['file'] ?>" target="_blank">view file</a></td>
+                    <td><input id="points_<?php echo $row['id'] ?>" type="number" value="<?php echo $row['Points'] ?>">
+                    </td>
+                    <td>
+                        <button class="evaluation-btn" data-submission="<?php echo $row['id'] ?>">Evaluate</button>
+                    </td>
+                </tr>
+                <?php
+            }
+            ?>
+        </table>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js'></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.evaluation-btn').click(function () {
+                    var submissionId = $(this).attr("data-submission");
+                    var points = $('#points_' + submissionId).val();
+                    if (!points) {
+                        alert("Please evaluate the Submission");
+                        return;
+                    }
+                    $.ajax({
+                        type: "POST",
+                        url: 'evaluation.php',
+                        data: {
+                            submissionId: submissionId,
+                            points: points
+                        },
+                        success: function (data) {
+                            alert(data);
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
+</div>
+</body>
+</html>
