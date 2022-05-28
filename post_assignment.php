@@ -162,3 +162,86 @@ include_once 'connect.inc.php';
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="" style="font-size:20px; color:#C94B4B" ;><span
+                        class="glyphicon glyphicon-pencil" style="color:#000"></span>BRIGHT MIND!</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="loginfac.php"> HOME</a></li>
+                <li><a href="logoutfac.php"><span class="glyphicon glyphicon-log-out"></span> LOGOUT</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="body">
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <h1>POST ASSIGNMENT!</h1>
+
+        <fieldset>
+            <legend>Details:</legend>
+            <label for="department">Department:</label>
+            <section>
+                <label class="select">
+                    <select name="department" required>
+                        <option value="0" selected disabled></option>
+                        <option value="CSE">CSE</option>
+                        <option value="IT">IT</option>
+                    </select>
+                    <i></i>
+                </label>
+            </section>
+
+            <label for="year">Year:</label>
+            <section>
+                <label class="select">
+                    <select name="year" required>
+                        <option value="0" selected disabled></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <i></i>
+                </label>
+            </section>
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="date">Deadline:</label>
+            <input type="date" id="date" name="date" required>
+        </fieldset>
+
+        <fieldset>
+            <input type="file" name="file" required>
+        </fieldset>
+
+        <button type="submit" name="btn-upload">UPLOAD</button>
+    </form>
+    <br/><br/>
+    <?php
+    if (isset($_GET['success'])) {
+        ?>
+        <label>File Uploaded Successfully... <a href="view.php">click here to view file.</a></label>
+        <?php
+    } else if (isset($_GET['fail'])) {
+        ?>
+        <label>Problem While File Uploading !</label>
+        <?php
+    } else {
+        ?>
+        <label>Upload any files(PDF, DOC, EXE, VIDEO, MP3, ZIP,etc...)</label>
+        <?php
+    }
+    ?>
+</div>
+</body>
+</html>
