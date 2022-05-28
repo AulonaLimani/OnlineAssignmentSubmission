@@ -28,3 +28,45 @@ if(isset($_POST['btn-upload']))
  @mkdir('./submissions/');
  $folder= "submissions/";
  
+ // new file size in KB
+ $new_size = $file_size/1024;  
+ // new file size in KB
+ 
+ // make file name in lower case
+ $new_file_name = strtolower($file);
+ // make file name in lower case
+ 
+ $final_file=str_replace(' ','-',$new_file_name);
+ if(mysqli_num_rows($query_run)<1)
+  {
+    echo '<script type="text/javascript">alert("No Such AssignmentId Found.")</script>';
+    header( "refresh:0;url=submit_assignment.php?fail" );
+  }
+  if(mysqli_num_rows($query_run1)>=1)
+  {
+    echo '<script type="text/javascript">alert("You have already submitted your assignment for the mentioned Assignment Id.")</script>';
+    header( "refresh:0;url=submit_assignment.php?fail" );
+  }
+
+ if(move_uploaded_file($file_loc,$folder.$final_file))
+ {
+  $sql="INSERT INTO Submission(assignmentid,file,type,size,username,firstname, lastname,department,year,subject,date,email_id) VALUES( $assignmentid,'$final_file','$file_type',$new_size,'$username','$first_name','$last_name','$department',$year,'$subject','$date','email_id')";
+  mysqli_query($handle,$sql);
+  ?>
+  <script>
+  alert('successfully uploaded');
+        window.location.href='submit_assignment.php?success';
+        </script>
+  <?php
+ }
+ else
+ {
+  ?>
+  <script>
+  alert('error while uploading file');
+        window.location.href='submit_assignment.php?fail';
+        </script>
+  <?php
+  }
+}
+?>
