@@ -71,3 +71,94 @@ include_once 'connect.inc.php';
             box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
             margin-bottom: 30px;
         }
+        
+        select {
+            padding: 6px;
+            height: 32px;
+            border-radius: 2px;
+        }
+
+        button {
+            padding: 19px 39px 18px 39px;
+            color: #FFF;
+            background-color: #3C6E71;
+            font-size: 18px;
+            text-align: center;
+            font-style: normal;
+            border-radius: 5px;
+            width: 100%;
+            border: none;
+            box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+            margin-bottom: 10px;
+        }
+
+        fieldset {
+            margin-bottom: 30px;
+            border: none;
+        }
+
+        legend {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        label.light {
+            font-weight: 300;
+            display: inline;
+        }
+
+        .number {
+            background-color: #5fcf80;
+            color: #fff;
+            height: 30px;
+            width: 30px;
+            display: inline-block;
+            font-size: 0.8em;
+            margin-right: 4px;
+            line-height: 30px;
+            text-align: center;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+            border-radius: 100%;
+        }
+
+        @media screen and (min-width: 480px) {
+
+            form {
+                max-width: 480px;
+            }
+
+        }
+
+        .navbar {
+            margin-bottom: 0;
+            background-color: transparent;
+            z-index: 9999;
+            border: 0;
+            font-size: 12px !important;
+            line-height: 1.42857143 !important;
+            letter-spacing: 4px;
+            border-radius: 0;
+        }
+
+        .navbar li a, .navbar .navbar-brand {
+            color: #3C6E71 !important;
+            font-weight: bolder;        }
+
+        .navbar-nav li a:hover, .navbar-nav li.active a {
+            color: #fff !important;
+            background-color: #284B63 !important;
+
+        }
+
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+            color: #C94B4B !important;
+        }
+    </style>
+</head>
+<body>
