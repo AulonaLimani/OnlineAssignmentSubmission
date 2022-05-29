@@ -108,4 +108,34 @@ $username = getuserfields('Username');
                 <td><strong>View</strong></td>
                 <td><strong>Submission</strong></td>
             </tr>
+            
+               <?php
+            $handle = @mysqli_connect('localhost', 'root', 'root', 'pi2');
+
+            $sql = "SELECT * FROM Assignment where Username='" . mysqli_real_escape_string($handle, $username) . "'";
+            $result_set = mysqli_query($handle, $sql);
+            while ($row = mysqli_fetch_array($result_set)) {
+                ?>
+                <tr>
+                    <td><?php echo $row['Assignmentid'] ?></td>
+                    <td><?php echo $row['file'] ?></td>
+                    <td><?php echo $row['type'] ?></td>
+                    <td><?php echo $row['Department'] ?></td>
+                    <td><?php echo $row['Year'] ?></td>
+                    <td><?php echo $row['Subject'] ?></td>
+                    <td><?php echo $row['Date'] ?></td>
+                    <td><a href="uploads/<?php echo $row['file'] ?>" target="_blank">view file</a></td>
+                    <td>
+                        <a href="student_submission.php?Assignmentid=<?php echo $row['Assignmentid'] ?>&Subject=<?php echo $row['Subject'] ?>"
+                           class="button" style="background-color: #3C6E71">View Submission</a></td>
+                </tr>
+                <?php
+            }
+            ?>
+        </table>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js'></script>
+    </div>
+</div>
+</body>
+</html>
   
