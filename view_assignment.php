@@ -89,3 +89,50 @@ $department = getuserfield('Department');
         </div>
     </div>
 </nav>
+    <br><br><br><br>
+<div class="container">
+    <h1>List of<span style="color: #284B63; font-weight: bolder"> Assignments</span> for <span style="color: #284B63; font-weight: bolder"><?php echo $first_name . ' ' . $last_name; ?></span></h1>
+    <div id="body">
+        <table width="80%" border="1" class="responstable">
+            <tr>
+                <th colspan="12" style="background-color: #3C6E71">Submit Assignment?...<label><a href="view_student_submissions.php">View your
+                            submissions...</a></label></th>
+            </tr>
+            <tr>
+                <td><strong>Assignment Id</strong></td>
+                <td><strong>File Name</strong></td>
+                <td><strong>First Name</strong></td>
+                <td><strong>Last Name</strong></td>
+                <td><strong>Subject</strong></td>
+                <td><strong>Deadline</strong></td>
+                <td><strong>View</strong></td>
+            </tr>
+            <?php
+            if ($year == 0) {
+                echo '<script type="text/javascript">alert("Please update your YEAR in your profile to view your assignments.")</script>';
+            } else {
+                $sql = "SELECT * FROM Assignment where Year=$year and Department='$department'";
+                $handle = @mysqli_connect('localhost', 'root', '2002', 'pi2');
+
+                $result_set = mysqli_query($handle, $sql);
+                while ($row = mysqli_fetch_array($result_set)) {
+                    ?>
+                    <tr>
+                        <td><?php echo $row['Assignmentid'] ?></td>
+                        <td><?php echo $row['file'] ?></td>
+                        <td><?php echo $row['Firstname'] ?></td>
+                        <td><?php echo $row['Lastname'] ?></td>
+                        <td><?php echo $row['Subject'] ?></td>
+                        <td><?php echo $row['Date'] ?></td>
+                        <td><a href="uploads/<?php echo $row['file'] ?>" target="_blank">view file</a></td>
+                    </tr>
+                    <?php
+                }
+            }
+            ?>
+        </table>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js'></script>
+    </div>
+</div>
+</body>
+</html>
