@@ -19,47 +19,65 @@ if (!logged_in() || !logged_in1()) {
             if ($password != $password_agn) {
                 echo '<script type="text/javascript">alert("Passwords Donot Match!")</script>';
             } else {
-                if ($profession == 'Student') {
-                    $query = "SELECT username from Student where username='" . $username . "'";
-                    $handle = @mysqli_connect('localhost', 'root', '2002', 'pi2');
-
-                    $query_run = mysqli_query($handle, $query);
-                    if (mysqli_num_rows($query_run) == 1) {
-                        echo '<script type="text/javascript">alert("Username Already Exists.")</script>';
-                    } else {
-                        $query = "INSERT INTO Student(Username, Email_id, Password, Firstname, Lastname, gender, department, year, date_of_birth, college, address, year_of_passing, Intermediate, about,contact) VALUES('" . mysqli_real_escape_string($handle, $username) . "','" . mysqli_real_escape_string($handle, $email) . "','" . mysqli_real_escape_string($handle, $password_hash) . "','" . mysqli_real_escape_string($handle, $firstname) . "','" . mysqli_real_escape_string($handle, $lastname) . "','" . mysqli_real_escape_string($handle, $gender) . "','" . mysqli_real_escape_string($handle, $department) . "','" . mysqli_real_escape_string($handle, $year) . "' ,'24.08.2002','','',2019,'','','')";
-                        $handle = @mysqli_connect('localhost', 'root', '2002', 'pi2');
-                        if (preg_match(
-                            '/^[a-zA-Z0-9 _\-\.]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/',
-                            $email)) {
-                            if ($query_run = mysqli_query($handle, $query)) {
-                                echo '<script type="text/javascript">alert("Successfully registered. Please login to continue.")</script>';
-                                header("refresh:1;url=login.php");
-                            }
+                switch ($profession) {
+                    case 'Student':
+                        $handle = @mysqli_connect('localhost', 'root', 'root', 'pi2');
+                        $stmt = $handle->prepare("select username from student where username = ?");
+                        $stmt->bind_param("s", $username);
+                        $stmt->execute();
+                        $stmt->store_result();
+                        if ($stmt->num_rows > 0) {
+                            echo '<script type="text/javascript">alert("Username Already Exists.")</script>';
+                            $stmt->close();
                         } else {
-                            echo '<script type="text/javascript">alert("Invalid Email")</script>';
-                        }
-                    }
-                } else if ($profession == 'Faculty') {
-                    $query = "SELECT username from Faculty where username='" . $username . "'";
-                    $handle = @mysqli_connect('localhost', 'root', '2002', 'pi2');
-
-                    $query_run = mysqli_query($handle, $query);
-                    if (mysqli_num_rows($query_run) == 1) {
-                        echo '<script type="text/javascript">alert("Username Already Exists.")</script>';
-                    } else {
-                        $query = "INSERT INTO Faculty(username,email_id,password,firstname,lastname,gender,department,designation,date_of_birth,college,address,contact,date_of_joining,higherstudies1,higherstudies2,specialization,graduateteach,PGteach) VALUES('" . mysqli_real_escape_string($handle, $username) . "','" . mysqli_real_escape_string($handle, $email) . "','" . mysqli_real_escape_string($handle, $password) . "','" . mysqli_real_escape_string($handle, $firstname) . "','" . mysqli_real_escape_string($handle, $lastname) . "','" . mysqli_real_escape_string($handle, $gender) . "','" . mysqli_real_escape_string($handle, $department) . "','','28.08.2002','','','','28.08.2002','','','','','')";
-                        if (preg_match(
-                            '/^[a-zA-Z0-9 _\-\.]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/',
-                            $email)) {
-                            if ($query_run = mysqli_query($handle, $query)) {
-                                echo '<script type="text/javascript">alert("Successfully registered. Please login to continue.")</script>';
-                                header("refresh:1;url=loginfac.php");
+                            $stmt->close();
+                            $handle = @mysqli_connect('localhost', 'root', 'root', 'pi2');
+                            $stmt = $handle->prepare("INSERT INTO Student(Username, Email_id, Password, Firstname, Lastname, gender, department, year, date_of_birth, college, address, year_of_passing, Intermediate, about,contact) VALUES(?,?,?,?,?,?,?,?,'1999-05-05','','',2019,'','','')");
+                            $stmt->bind_param("sssssssi", $username, $email, $password_hash, $firstname, $lastname, $gender, $department, $year);
+                            if (preg_match(
+                                '/^[a-zA-Z0-9 _\-\.]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/',
+                                $email)) {
+                                $stmt->execute();
+                                if ($stmt->affected_rows > 0) {
+                                    echo '<script type="text/javascript">alert("Successfully registered. Please login to continue.")</script>';
+                                    header("refresh:1;url=login.php");
+                                    $stmt->close();
+                                }
+                            } else {
+                                echo '<script type="text/javascript">alert("Invalid Email")</script>';
+                                $stmt->close();
                             }
-                        } else {
-                            echo '<script type="text/javascript">alert("Invalid Email")</script>';
                         }
-                    }
+                        break;
+                    case 'Faculty':
+                        $handle = @mysqli_connect('localhost', 'root', 'root', 'pi2');
+                        $stmt = $handle->prepare("select username from Faculty where username = ?");
+                        $stmt->bind_param("s", $username);
+                        $stmt->execute();
+                        $stmt->store_result();
+                        if ($stmt->num_rows > 0) {
+                            echo '<script type="text/javascript">alert("Username Already Exists.")</script>';
+                            $stmt->close();
+                        } else {
+                            $stmt->close();
+                            $handle = @mysqli_connect('localhost', 'root', 'root', 'pi2');
+                            $stmt = $handle->prepare("INSERT INTO Faculty(username,email_id,password,firstname,lastname,gender,department,designation,date_of_birth,college,address,contact,date_of_joining,higherstudies1,higherstudies2,specialization,graduateteach,PGteach) VALUES(?,?,?,?,?,?,?,'','28.08.2002','','','','28.08.2002','','','','','')");
+                            $stmt->bind_param("sssssss", $username, $email, $password_hash, $firstname, $lastname, $gender, $department);
+                            if (preg_match(
+                                '/^[a-zA-Z0-9 _\-\.]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/',
+                                $email)) {
+                                $stmt->execute();
+                                if ($stmt->affected_rows > 0) {
+                                    echo '<script type="text/javascript">alert("Successfully registered. Please login to continue.")</script>';
+                                    header("refresh:1;url=login.php");
+                                    $stmt->close();
+                                }
+                            } else {
+                                echo '<script type="text/javascript">alert("Invalid Email")</script>';
+                                $stmt->close();
+                            }
+                        }
+                        break;
                 }
             }
         } else {
@@ -67,14 +85,15 @@ if (!logged_in() || !logged_in1()) {
         }
     }
     ?>
-<!DOCTYPE html>
+    <!DOCTYPE html>
     <html>
     <head>
         <title>Register Here!</title>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+        <link rel='stylesheet prefetch'
+              href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
         <link rel="stylesheet" href="styles/demo.css">
         <link rel="stylesheet" href="styles/sky-form.css">
         <!--[if lt IE 9]>
@@ -91,7 +110,8 @@ if (!logged_in() || !logged_in1()) {
         <![endif]-->
     </head>
     <body style="background:url(images/Registration-photo.jpg)" ;>
-    <h2 style="text-align:right;color: #9b9797">Go back to<a href="new.php" style="color:white;text-decoration:none;"> Home </a>page...
+    <h2 style="text-align:right;color: #9b9797">Go back to<a href="new.php"
+                                                             style="color:white;text-decoration:none;"> Home </a>page...
     </h2>
     <div class="body body-s">
 
